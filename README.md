@@ -10,3 +10,6 @@ To build you need cmake and smply enter this command
 >> ctest --test-dir build -C Debug --output-on-failure
 
 it will simply build and go through each test step and will tell you if you failed a step
+
+
+If you have usefull tips or things i can improve on please let me know with a issue on this repo
