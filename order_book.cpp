@@ -76,7 +76,6 @@ std::vector<Trade> OrderBook::addOrder(Order order) {
 }
 
 bool OrderBook::cancelOrder(uint64_t id) {
-    // Search the buy side.
     for (auto level = bids_.begin(); level != bids_.end(); ++level) {
         auto& orders = level->second;
         auto it = std::find_if(orders.begin(), orders.end(),
@@ -84,13 +83,12 @@ bool OrderBook::cancelOrder(uint64_t id) {
         if (it != orders.end()) {
             orders.erase(it);
             if (orders.empty()) {
-                bids_.erase(level);   // remove the empty price level
+                bids_.erase(level);
             }
-            return true;              // return right away, 'level' is now invalid
+            return true;
         }
     }
 
-    // Search the sell side.
     for (auto level = asks_.begin(); level != asks_.end(); ++level) {
         auto& orders = level->second;
         auto it = std::find_if(orders.begin(), orders.end(),
@@ -104,9 +102,8 @@ bool OrderBook::cancelOrder(uint64_t id) {
         }
     }
 
-    return false;   // not in the book (never existed, filled, or already cancelled)
+    return false;
 }
-
 
 std::optional<int64_t> OrderBook::bestBid() const {
     if (bids_.empty()) {
