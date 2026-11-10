@@ -4,7 +4,7 @@
 This is simply a small project i did, most of the code was written by me and no AI Agent
 
 
-To build you need cmake and smply enter this command
+To build you need cmake and simply enter this command
 
 >> cmake --build build --config Debug
 >> ctest --test-dir build -C Debug --output-on-failure
